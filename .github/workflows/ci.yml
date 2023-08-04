@@ -23,12 +23,12 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and push Docker image
+      - name: Build, tag, and push docker image to Amazon ECR
         id: build-image
         env:
-          ECR_REGISTRY: 862801058672.dkr.ecr.eu-south-1.amazonaws.com
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: kubo-ipfs-node
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG . -f ./Dockerfile .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
