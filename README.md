@@ -4,5 +4,5 @@ This repository contains a Dockerfile for running an IPFS node using the IPFS Ku
 
 ## How to use
 
-1. Build the Docker image with `docker build -t my-ipfs-node .`.
-2. Run the Docker container with `docker run -p 4001:4001 -p 5001:5001 -p 8080:8080 my-ipfs-node`.
+1. Build the Docker image with `docker build -t kubo-ipfs-node .`.
+2. Run the Docker container with `docker run -p 4001:4001 -p 5001:5001 -p 8080:8080 kubo-ipfs-node`.
